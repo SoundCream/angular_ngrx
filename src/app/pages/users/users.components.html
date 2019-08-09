@@ -1,0 +1,13 @@
+<h3>
+    User Page
+</h3>
+<button (click)="ShowA()">A</button>
+<button (click)="ShowB()">B</button>
+<div class="col-md-12">
+    <div class="col-md-12" *ngIf="_PanelModel.DisplayPanelA">
+        <app-panel-a></app-panel-a>
+    </div>
+    <div class="col-md-12" *ngIf="_PanelModel.DisplayPanelB">
+        <app-panel-b></app-panel-b>
+    </div>
+</div>
