@@ -1,8 +1,6 @@
-//import { Subject } from 'rxjs';
 import { PanelModel } from '../../components/model/panelmodel';
 import { Component, OnDestroy, OnInit } from "@angular/core";
-//import { PanelASection } from '../../components/section/panela/panela';
-//import { PanelBSection } from '../../components/section/panelb/panelb';
+import { PanelComponentService } from '../../services/panelcomponentservice';
 
 @Component({
     selector: 'app-user',
@@ -10,23 +8,40 @@ import { Component, OnDestroy, OnInit } from "@angular/core";
 })
 
 export class UsersComponent implements OnInit, OnDestroy {
-    public _PanelModel = new PanelModel();
-    //private modalSubject = new Subject<PanelModel>();
+    _isDisplayA: boolean;
+    private _PanelModel = new PanelModel();
+    private _panelComponentService: PanelComponentService;
+    public userList: string[];
+    // name: string = '';
+
+    constructor(panelComponentService: PanelComponentService) {
+        this._panelComponentService = panelComponentService;
+        this._PanelModel.TextMsg = "arm";
+        this.userList = ["User BKK", "User USA"];
+    }
 
     ngOnInit(): void {
         //this.modalSubject.next(this._PanelModel);
     }
+
     ngOnDestroy(): void {
     }
 
-    ShowA(){
+    ShowA(): void{
         this._PanelModel.DisplayPanelA = true;
         this._PanelModel.DisplayPanelB = false;
+        this._PanelModel.TextMsg = "arm555";
+        this._panelComponentService.DisplayPanelByModel(this._PanelModel);
     }
 
-    ShowB(){
-        
+    ShowB(): void{
         this._PanelModel.DisplayPanelA = false;
         this._PanelModel.DisplayPanelB = true;
+        this._PanelModel.TextMsg = "arm555";
+        this._panelComponentService.DisplayPanelByModel(this._PanelModel);
+    }
+
+    functionInput(input): void{
+        console.log(input);
     }
 }

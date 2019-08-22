@@ -1,4 +1,4 @@
-import { Component, OnDestroy, OnInit } from "@angular/core";
+import { Component, OnDestroy, OnInit, Input } from "@angular/core";
 import { PanelModel } from '../../model/panelmodel';
 
 @Component({
@@ -7,13 +7,15 @@ import { PanelModel } from '../../model/panelmodel';
 })
 
 export class PanelBSection implements OnInit, OnDestroy{
-    constructor(
-        private _panelModel : PanelModel){
-    }
+private panelModel : PanelModel;
 
+@Input() data;
     ngOnInit(): void {
+        console.log(this.data);
+        this.panelModel = this.data; 
 
     }
+
     ngOnDestroy(): void {
 
     }

@@ -1,13 +1,30 @@
 <h3>
     User Page
 </h3>
+<input [(ngModel)]="name" />
 <button (click)="ShowA()">A</button>
 <button (click)="ShowB()">B</button>
+
 <div class="col-md-12">
     <div class="col-md-12" *ngIf="_PanelModel.DisplayPanelA">
         <app-panel-a></app-panel-a>
     </div>
     <div class="col-md-12" *ngIf="_PanelModel.DisplayPanelB">
-        <app-panel-b></app-panel-b>
+        <app-panel-b [data]="_PanelModel"></app-panel-b>
     </div>
 </div>
+
+<div class="col-md-12" *ngFor="let item of userList">
+    <p>{{ item }}</p>
+</div>
+<h5 style="color:red;">
+    {{_PanelModel.TextMsg}}  {{name}}
+</h5>
+
+<h3>
+    Test Page
+ </h3>
+ <input type="text" #inputbox (keyup)="functionInput(inputbox.value)" />
+ <h5 style="color:green;">
+ {{ inputbox.value }}
+ </h5>
