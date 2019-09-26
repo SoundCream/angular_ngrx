@@ -6,9 +6,11 @@ const routes: Routes = [
   { path:"", redirectTo: "", pathMatch: "full" },
   { path:"**", redirectTo:"user" },
   { path:"user", component: UsersComponent }
+  // { path:"user", component: UsersComponent, runGuardsAndResolvers: "paramsOrQueryParamsChange"  }
 ];
 
 @NgModule({
+  // imports: [RouterModule.forRoot(routes, { onSameUrlNavigation: 'reload' })],
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule]
 })

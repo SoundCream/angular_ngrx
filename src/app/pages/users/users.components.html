@@ -1,6 +1,12 @@
 <h3>
     User Page
 </h3>
+<h3><span translate>Menu.Products</span></h3>
+<p>
+    <select [(ngModel)]="selectedLanguage" name="selectedLanguage" (change)="switchLanguage()">
+        <option *ngFor="let languageModel of languageModels" [ngValue]="languageModel.name">{{languageModel.name}}</option>
+      </select>
+</p>
 <input [(ngModel)]="name" />
 <button (click)="ShowA()">A</button>
 <button (click)="ShowB()">B</button>
@@ -21,9 +27,10 @@
     {{_PanelModel.TextMsg}}  {{name}}
 </h5>
 
-<h3>
+<h4>
     Test Page
- </h3>
+    <button mat-raised-button (click)="openDialog()">OpenDialog</button>
+ </h4>
  <input type="text" #inputbox (keyup)="functionInput(inputbox.value)" />
  <h5 style="color:green;">
  {{ inputbox.value }}
